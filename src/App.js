@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Search from './components/Search';
+import { useState } from 'react';
+import {campaigns} from './mockData/mock'
+import CampaignList from './components/CampaignList';
+import Pagination from './components/Pagination';
 function App() {
+  const [ campaignData, setCampaignData ] = useState(campaigns);
+  const [ filteredData, setFilteredData ] = useState(campaigns);
+  const [ pageNo, setPageNo ] = useState(1);
+  const handleFilter = (companyName) => {
+    let searchedResults = campaignData.filter(({ company }) => company == companyName);
+    setFilteredData(searchedResults);
+    setPageNo(1);
+  }
+  console.log('filteredData', filteredData)
+  let pages = [];
+  for (let i = 1; i <= (filteredData.length/ 10); i++){
+    pages.push(i)
+  }
+  console.log('filteredData',pages)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search handleFilter={handleFilter} />
+      <CampaignList filteredData={filteredData.slice(pageNo,pageNo+10)} />
+      <Pagination setPageNo={setPageNo} pages={pages}/>
     </div>
   );
 }
