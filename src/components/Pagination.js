@@ -4,7 +4,6 @@ const Pagination = function ({ pages,setPageNo }) {
     const handlePagination = (page) => {
         setPageNo(page)
     }
-    console.log('pages here',pages)
     let pageButtons=pages.map(page => 
         <button onClick={()=>handlePagination(page)} className="button" >{page}</button>
     )
