@@ -1,16 +1,20 @@
 import React from 'react';
 
-const Pagination = function ({ pages,setPageNo }) {
+const Pagination = function ({ pages,setPageNo,pageNo }) {
     const handlePagination = (page) => {
         setPageNo(page)
     }
     let pageButtons=pages.map(page => 
-        <button onClick={()=>handlePagination(page)} className="button" >{page}</button>
+        <div onClick={() => handlePagination(page)} className={`page ${pageNo==page? 'active':''}`} >{page}</div>
     )
     return (
         <React.Fragment>
             <div className="pagination">
-            { pageButtons}
+                {pageNo > 1 && <div onClick={() => handlePagination(pageNo - 1)} className="page" >{'<'}</div>}
+                
+                {pageButtons}
+                {pageNo < pages.length && <div onClick={() => handlePagination(pageNo + 1)} className="page" >{'>'}</div>}
+                
             </div>
         </React.Fragment>
     )

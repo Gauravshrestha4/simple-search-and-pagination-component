@@ -4,22 +4,24 @@ const CampaignList = function ({ filteredData }) {
     const filteredJsx=filteredData.map(({ company, type,date },k) => {
         return (
             <tbody>
-            <tr className="listContainer_row" key={k}>
-                <td>{company}</td>
+                <tr className="listContainer_row" key={k}>
+                    <td><input type="checkbox"/></td>
+                <td className="companyName">{company}</td>
                 <td>{type}</td>
-                <td>{date}</td>
+                <td>{Date("Feb 13, 2014 11:13:00")}</td>
+                <td><i class='far fa-edit'></i> <i class='far fa-trash-alt'></i></td>
             </tr>
             </tbody>
         )
     })
-    console.log('filteredJsx',filteredJsx)
     return (
         <table className="listContainer">
             <thead className="listContainer_header">
                 <tr>
+                    <td><input type="checkbox"/></td>
                     <td>Company Name</td>
                     <td>Type</td>
-                    <td>last Updated</td>
+                    <td>Last Saved</td>
                     <td>Actions</td>
                 </tr>
             </thead>

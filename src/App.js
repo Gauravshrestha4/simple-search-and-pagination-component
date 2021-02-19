@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <Search handleFilter={handleFilter} />
       <CampaignList filteredData={filteredData.slice(pageNo-1,pageNo+9)} />
-      <Pagination setPageNo={setPageNo} pages={pages}/>
+      <Pagination setPageNo={setPageNo} pages={pages} pageNo={pageNo}/>
     </div>
   );
 }

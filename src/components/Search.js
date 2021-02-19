@@ -17,7 +17,7 @@ const Search = function ({handleFilter}) {
     }
     return (
         <div className="searchContainer">
-            <input placeholder="search" onChange={e=>debouncedSearch(handleSearch,500)(e)} className="searchContainer_search" />
+            <input placeholder="Search" onChange={e=>debouncedSearch(handleSearch,500)(e)} className="searchContainer_search" />
             <div onClick={()=>console.log('clicked')} className="searchContainer_advanceFilter">Advanced Filters</div>
         </div>
     )
